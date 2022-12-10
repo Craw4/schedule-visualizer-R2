@@ -60,7 +60,7 @@ public class DragAndDropController {
 
     private void setupOnDragExited(DropTarget target) {
         target.getNode().setOnDragExited(event -> {
-            target.clearValidDropTargetSignal();
+            target.clearDropTargetSignal();
             event.consume();
         });
     }

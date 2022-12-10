@@ -3,7 +3,7 @@ package edu.hanover.schedulevisualizer.ui.draganddrop;
 import javafx.scene.Node;
 
 public interface DropTarget {
-    void clearValidDropTargetSignal();
+    void clearDropTargetSignal();
     void signalValidDropTarget();
 
     String getTimeslotId();
