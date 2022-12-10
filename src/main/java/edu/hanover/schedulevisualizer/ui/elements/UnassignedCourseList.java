@@ -35,7 +35,7 @@ public class UnassignedCourseList extends VBox implements MyObserver<List<Course
         DragAndDropController.getInstance().setupDropTarget(this);
     }
 
-    public void clearValidDropTarget() {
+    public void clearValidDropTargetSignal() {
         setBorder(Border.EMPTY);
     }
 

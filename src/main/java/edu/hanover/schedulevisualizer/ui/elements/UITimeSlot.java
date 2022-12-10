@@ -68,7 +68,7 @@ public class UITimeSlot extends VBox implements DropTarget {
         return timeslotId;
     }
 
-    public void clearValidDropTarget() {
+    public void clearValidDropTargetSignal() {
         setBorder(defaultBorder);
     }
 
