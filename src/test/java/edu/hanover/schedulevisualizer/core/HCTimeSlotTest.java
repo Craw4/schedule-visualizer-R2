@@ -54,42 +54,34 @@ public class HCTimeSlotTest {
     }
 
     private void assertTimeSlotHasStartTimeOf(int slotnum, int hours, int minutes) {
-        List<Weekday> dummyWeekdayList = List.of();
-        HCTimeSlot timeslot = new HCTimeSlot(dummyWeekdayList, slotnum);
+        HCTimeSlot timeslot = new HCTimeSlot(List.of(), slotnum);
         DayTime startTime = new DayTime(hours, minutes);
         assertThat(timeslot.getStartTime(), equalTo(startTime));
     }
     private void assertTimeSlotHasEndTimeOf(int slotnum, int hours, int minutes) {
-        List<Weekday> dummyWeekdayList = List.of();
-        HCTimeSlot timeslot = new HCTimeSlot(dummyWeekdayList, slotnum);
+        HCTimeSlot timeslot = new HCTimeSlot(List.of(), slotnum);
         DayTime endTime = new DayTime(hours, minutes);
         assertThat(timeslot.getEndTime(), equalTo(endTime));
     }
 
     @Test
     public void testOverlapsDifferentSlotNum(){
-        List<Weekday> thurs1 = List.of(Weekday.Thursday);
-        HCTimeSlot timeSlot1 = new HCTimeSlot(thurs1, 6);
+        HCTimeSlot timeSlot1 = new HCTimeSlot(List.of(Weekday.Thursday), 6);
 
-        List<Weekday> thurs2 = List.of(Weekday.Thursday);
-        HCTimeSlot timeSlot2 = new HCTimeSlot(thurs2, 6);
+        HCTimeSlot timeSlot2 = new HCTimeSlot(List.of(Weekday.Thursday), 6);
 
-        List<Weekday> thurs3 = List.of(Weekday.Thursday);
-        HCTimeSlot timeSlot3 = new HCTimeSlot(thurs3, 7);
+        HCTimeSlot timeSlot3 = new HCTimeSlot(List.of(Weekday.Thursday), 7);
 
         assertTrue(timeSlot1.overlaps(timeSlot2));
         assertFalse(timeSlot1.overlaps(timeSlot3));
     }
     @Test
     public void testOverlapsDifferentDay(){
-        List<Weekday> thurs1 = List.of(Weekday.Thursday);
-        HCTimeSlot thursSlot1 = new HCTimeSlot(thurs1, 6);
+        HCTimeSlot thursSlot1 = new HCTimeSlot(List.of(Weekday.Thursday), 6);
 
-        List<Weekday> friday1 = List.of(Weekday.Friday);
-        HCTimeSlot friSlot1 = new HCTimeSlot(friday1, 6);
+        HCTimeSlot friSlot1 = new HCTimeSlot(List.of(Weekday.Friday), 6);
 
-        List<Weekday> thurs3 = List.of(Weekday.Thursday);
-        HCTimeSlot thursSlot2 = new HCTimeSlot(thurs3, 6);
+        HCTimeSlot thursSlot2 = new HCTimeSlot(List.of(Weekday.Thursday), 6);
 
         assertFalse(thursSlot1.overlaps(friSlot1));
         assertTrue(thursSlot1.overlaps(thursSlot2));
