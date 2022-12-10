@@ -21,15 +21,19 @@ public class HelloApplication extends Application {
         app.startApp(stage);
         Thread thread = new Thread() {
             public void run() {
-                try {
-                    Thread.sleep(1000);
-                    Context.getInstance().getData();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                getDataAfter(1000);
             }
         };
         thread.start();
+    }
+
+    private static void getDataAfter(int millis) {
+        try {
+            Thread.sleep(millis);
+            Context.getInstance().getData();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void main(String[] args) {
