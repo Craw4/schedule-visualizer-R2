@@ -27,11 +27,7 @@ public class UITimeSlot extends VBox implements DropTarget {
                 "timeslot-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+        TryLoadHolder.tryLoad(fxmlLoader);
     }
 
     static UITimeSlot forDayPattern(DayPattern dayPattern, String slotID, String timeslotId) {

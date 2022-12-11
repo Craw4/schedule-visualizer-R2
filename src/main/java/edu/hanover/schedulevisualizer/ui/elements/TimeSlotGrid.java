@@ -30,11 +30,7 @@ public class TimeSlotGrid extends HBox implements MyObserver<List<Course>> {
                 "timeslotgrid-view.fxml"));
         fxmlLoader.setRoot(this);
         addDayColumns();
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+        TryLoadHolder.tryLoad(fxmlLoader);
     }
 
     private void addDayColumns() {

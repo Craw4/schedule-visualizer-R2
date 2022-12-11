@@ -1,7 +1,6 @@
 package edu.hanover.schedulevisualizer.ui.elements;
 
 import edu.hanover.schedulevisualizer.core.Course;
-import edu.hanover.schedulevisualizer.ui.draganddrop.DragAndDropController;
 import edu.hanover.schedulevisualizer.ui.draganddrop.DragSource;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
-import java.io.IOException;
 
 public class CourseEntry extends StackPane implements DragSource {
     @FXML
@@ -26,12 +23,7 @@ public class CourseEntry extends StackPane implements DragSource {
                 "course-entry-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-        try {
-            fxmlLoader.load();
-            DragAndDropController.getInstance().setupDragSource(this);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+        TryLoadHolder.tryLoadWithDragDropController(fxmlLoader, this);
     }
 
     public String getDraggedContent() {

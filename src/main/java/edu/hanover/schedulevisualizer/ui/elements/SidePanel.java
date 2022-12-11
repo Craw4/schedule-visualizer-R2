@@ -15,11 +15,7 @@ public class SidePanel extends VBox{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "sidepanel-view.fxml"));
         fxmlLoader.setRoot(this);
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+        TryLoadHolder.tryLoad(fxmlLoader);
     }
 
 }
